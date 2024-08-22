@@ -16,5 +16,9 @@
         Title="Informace o zařízení"
         ContentTemplate="{DataTemplate local:DeviceInfoPage}"
         Route="DeviceInfoPage" />
+    <ShellContent
+        Title="Sensory"
+        ContentTemplate="{DataTemplate local:SensorPage}"
+        Route="SensorPage" />
 
 </Shell>
