@@ -3,9 +3,36 @@
     x:Class="Senzory.Pages.SensorPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Sensory">
-    <VerticalStackLayout Margin="20">
-        <Label x:Name="accelLabel" />
-        <Label x:Name="rotLabel" />
+    Title="Senzory">
+
+    <VerticalStackLayout
+        Margin="20"
+        HorizontalOptions="Start"
+        Spacing="20">
+        <Label x:Name="accelLabel" Text="Akcelerace" />
+        <Label x:Name="rotLabel" Text="Rotace" />
+        <Button
+            x:Name="ShortHapticBtn"
+            Clicked="HapticBtn_OnClicked"
+            HorizontalOptions="Start"
+            Text="Vibrace"
+            WidthRequest="100" />
+        <Button
+            x:Name="LongHapticBtn"
+            Clicked="LongHapticBtn_OnClicked"
+            HorizontalOptions="Start"
+            Text="Stop vibrace"
+            WidthRequest="150" />
+        <Label
+            x:Name="FlashLightLabel"
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Start"
+            Text="Svítilna" />
+        <Switch
+            x:Name="FlashLightSwitch"
+            HorizontalOptions="Start"
+            Toggled="FlashLightBtn_OnClicked" />
     </VerticalStackLayout>
+
 </ContentPage>

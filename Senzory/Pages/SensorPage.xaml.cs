@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Senzory.Pages;
 
 public partial class SensorPage : ContentPage
@@ -27,6 +29,10 @@ public partial class SensorPage : ContentPage
                 Accelerometer.Default.ReadingChanged -= Accelerometer_ReadingChanged;
             }
         }
+        else
+        {
+            DisplayAlert("Error", "Akcelerometr není podporován", "Ok");
+        }
     }
     private void ToggleGyroscope()
     {
@@ -45,6 +51,10 @@ public partial class SensorPage : ContentPage
                 Gyroscope.Default.ReadingChanged -= Gyroscope_ReadingChanged;
             }
         }
+        else
+        {
+           // throw new Exception();
+        }
     }
 
     private void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
@@ -55,5 +65,34 @@ public partial class SensorPage : ContentPage
     private void Gyroscope_ReadingChanged(object sender, GyroscopeChangedEventArgs e)
     {
         rotLabel.Text = $"Gyroscope: {e.Reading}";
+    }
+
+    private void HapticBtn_OnClicked(object? sender, EventArgs e)
+    {
+        var secondsToVibrate = Random.Shared.Next(1, 7);
+        var vibrationLength = TimeSpan.FromSeconds(secondsToVibrate);
+
+        Vibration.Default.Vibrate(vibrationLength);
+    }
+
+    private void LongHapticBtn_OnClicked(object? sender, EventArgs e)
+    {
+        Vibration.Default.Cancel();
+    }
+
+    private async void FlashLightBtn_OnClicked(object? sender, EventArgs e)
+    {
+        try
+        {
+            if (FlashLightSwitch.IsToggled)
+                await Flashlight.Default.TurnOnAsync();
+            else
+                await Flashlight.Default.TurnOffAsync();
+        }
+        catch (FeatureNotSupportedException ex)
+        {
+            FlashLightLabel.Text = "Flashlight not supported on this device";
+        }
+
     }
 }

@@ -5,20 +5,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Senzory.Pages"
     Title="Senzory"
-    Shell.FlyoutBehavior="Flyout">
+    FlyoutBehavior="Flyout">
 
     <ShellContent
         Title="Stav baterie"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
     <ShellContent
         Title="Informace o zařízení"
         ContentTemplate="{DataTemplate local:DeviceInfoPage}"
         Route="DeviceInfoPage" />
     <ShellContent
-        Title="Sensory"
+        Title="Senzory"
         ContentTemplate="{DataTemplate local:SensorPage}"
         Route="SensorPage" />
+    <ShellContent
+        Title="Dotyková obrazovka"
+        ContentTemplate="{DataTemplate local:TouchScreenPage}"
+        Route="TouchScreenPage" />
 
 </Shell>

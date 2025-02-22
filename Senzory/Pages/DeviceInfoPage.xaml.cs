@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text;
 
 namespace Senzory.Pages;
@@ -6,7 +7,7 @@ public partial class DeviceInfoPage : ContentPage
 {
 	public DeviceInfoPage()
 	{
-        DeviceDisplay.MainDisplayInfoChanged += ReadDeviceInfo;
+        DeviceDisplay.Current.MainDisplayInfoChanged += ReadDeviceInfo;
 		InitializeComponent();
         ReadDeviceInfo();
 	}
@@ -17,6 +18,7 @@ public partial class DeviceInfoPage : ContentPage
         StringBuilder sb = new();
 
         sb.AppendLine($"Model: {DeviceInfo.Current.Model}");
+        Debug.Print($"Jméno zaøízení: {DeviceInfo.Current.Name}\nObnovovací frekvence: {DeviceDisplay.Current.MainDisplayInfo.RefreshRate}");
         sb.AppendLine($"Manufacturer: {DeviceInfo.Current.Manufacturer}");
         sb.AppendLine($"Name: {DeviceInfo.Current.Name}");
         sb.AppendLine($"OS Version: {DeviceInfo.Current.VersionString}");

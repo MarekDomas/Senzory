@@ -10,10 +10,11 @@ public partial class MainPage : ContentPage
 
     private void checkBattery(object sender, BatteryInfoChangedEventArgs e)
     {
-        double stavBaterie = Battery.ChargeLevel;
+        var stavBaterie = Battery.ChargeLevel;
         //Nabití baterie je uvedeno v rozsahu od 0 do 1 proto se násobí 100
         lbl.Text = $"Stav baterie: {stavBaterie * 100}%";
 
+        //Šířka a barva boxu se nastaví podle hodnoty stavu baterie
         box.WidthRequest = stavBaterie * 200;
 
         switch (stavBaterie * 100)
