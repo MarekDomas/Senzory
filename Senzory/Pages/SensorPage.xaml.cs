@@ -53,7 +53,7 @@ public partial class SensorPage : ContentPage
         }
         else
         {
-           // throw new Exception();
+            DisplayAlert("Error", "Gyroskop není podporován", "Ok");
         }
     }
 
@@ -69,15 +69,29 @@ public partial class SensorPage : ContentPage
 
     private void HapticBtn_OnClicked(object? sender, EventArgs e)
     {
-        var secondsToVibrate = Random.Shared.Next(1, 7);
-        var vibrationLength = TimeSpan.FromSeconds(secondsToVibrate);
+        try
+        {
+            var secondsToVibrate = Random.Shared.Next(1, 7);
+            var vibrationLength = TimeSpan.FromSeconds(secondsToVibrate);
 
-        Vibration.Default.Vibrate(vibrationLength);
+            Vibration.Default.Vibrate(vibrationLength);
+        }
+        catch
+        {
+            DisplayAlert("Error", "Haptika není podporována", "Ok");
+        }
     }
 
     private void LongHapticBtn_OnClicked(object? sender, EventArgs e)
     {
-        Vibration.Default.Cancel();
+        try
+        {
+            Vibration.Default.Cancel();
+        }
+        catch
+        {
+            DisplayAlert("Error", "Vibrace nejsou podporovány", "Ok");
+        }
     }
 
     private async void FlashLightBtn_OnClicked(object? sender, EventArgs e)

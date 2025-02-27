@@ -20,7 +20,7 @@
         ContentTemplate="{DataTemplate local:SensorPage}"
         Route="SensorPage" />
     <ShellContent
-        Title="Dotyková obrazovka"
+        Title="Obrazovka"
         ContentTemplate="{DataTemplate local:TouchScreenPage}"
         Route="TouchScreenPage" />
 
