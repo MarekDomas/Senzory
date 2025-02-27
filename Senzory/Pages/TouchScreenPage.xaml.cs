@@ -18,21 +18,21 @@ public partial class TouchScreenPage : ContentPage
         MainLayout.GestureRecognizers.Add(panGestureRecognizer);
     }
 
-
     private void OnPanUpdated(object? sender, PanUpdatedEventArgs e)
     {
         switch (e.StatusType)
         {
             case GestureStatus.Started:
-                // Uložíme aktuální polohu ètverce
+                // Ukládání aktuální polohy ètverce
                 panX = AbsoluteLayout.GetLayoutBounds(boxView).X;
                 panY = AbsoluteLayout.GetLayoutBounds(boxView).Y;
                 break;
 
             case GestureStatus.Running:
-                // Pøièítáme posun k pùvodní poloze
+                // Pøièítání posunu k pùvodní poloze
                 var newX = panX + e.TotalX;
                 var newY = panY + e.TotalY;
+                lbl.Text = $"Táhnìte se ètvercem\nX:{panX + e.TotalX} Y:{panY + e.TotalY}";
                 AbsoluteLayout.SetLayoutBounds(boxView, new(newX, newY, sideLength, sideLength));
                 break;
         }

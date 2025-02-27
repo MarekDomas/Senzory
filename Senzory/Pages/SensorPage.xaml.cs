@@ -71,8 +71,7 @@ public partial class SensorPage : ContentPage
     {
         try
         {
-            var secondsToVibrate = Random.Shared.Next(1, 7);
-            var vibrationLength = TimeSpan.FromSeconds(secondsToVibrate);
+            var vibrationLength = TimeSpan.FromSeconds(7);
 
             Vibration.Default.Vibrate(vibrationLength);
         }
@@ -81,19 +80,6 @@ public partial class SensorPage : ContentPage
             DisplayAlert("Error", "Haptika není podporována", "Ok");
         }
     }
-
-    private void LongHapticBtn_OnClicked(object? sender, EventArgs e)
-    {
-        try
-        {
-            Vibration.Default.Cancel();
-        }
-        catch
-        {
-            DisplayAlert("Error", "Vibrace nejsou podporovány", "Ok");
-        }
-    }
-
     private async void FlashLightBtn_OnClicked(object? sender, EventArgs e)
     {
         try
@@ -109,4 +95,17 @@ public partial class SensorPage : ContentPage
         }
 
     }
+
+    private void LongHapticBtn_OnClicked(object? sender, EventArgs e)
+    {
+        try
+        {
+            Vibration.Default.Cancel();
+        }
+        catch
+        {
+            DisplayAlert("Error", "Vibrace nejsou podporovány", "Ok");
+        }
+    }
+
 }
